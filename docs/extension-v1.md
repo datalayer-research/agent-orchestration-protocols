@@ -56,6 +56,7 @@ untouched and makes the extension trivially strippable by a proxy.
 | `credential` | `string` | The execution's own short-lived token, scoped to exactly its context manifest. A bearer credential: taken out of the message as it arrives, held for the run, and never written into task state. What the stored message keeps is that one was sent (`"withheld"`). |
 | `checkpoint` | `{checkpointId}` | Resume: this delegation continues the work the named checkpoint holds, rather than starting it again. |
 | `pause` | `{}` (presence) | Ask the worker to stop at a checkpoint it can be resumed from. Neither protocol has a pause — A2A cancels, ACP cancels. |
+| `approval` | `{optionId}` | The option chosen for the approval a task is waiting on, sent on that task: over A2A a message naming the task (`taskId`), over ACP the permission's answer. A caller that does not know the extension answers with one whole word instead — *yes*, *no*, *always*, or an option's name — and nothing else chooses. |
 
 ## Fields a worker sends
 
@@ -64,6 +65,8 @@ untouched and makes the extension trivially strippable by a proxy.
 | `usage` | `{inputTokens?, outputTokens?, cost?, currency}` | What the turn spent. Nothing else records it: a budget's `cost` is a limit, not a measurement, and platform credits are held per tree rather than per node. `cost` is present only when the worker could price its own model. |
 | `paused` | `{checkpointId}` | The checkpoint the worker actually stopped at, which a later delegation names to resume. |
 | `error` | `{code, limit}` | A refusal the worker owns — `budget_exhausted` naming the limit it hit — as distinct from a worker that broke. Nothing another attempt could spend differently. |
+| `approvalRequest` | `{toolCall, options, expiresAt}` | On the message of an `input-required` status: what the task waits for — the tool call (`id`, `title`, `kind`, `sentence`, its arguments), the options (`optionId`, `name`, `kind` of `allow_once`, `allow_always`, `reject_once`, `reject_always`) and until when. ACP's `session/request_permission`, given to A2A; the stream ends there, the caller answers with `approval` and subscribes again. Since SHIELD SH-15 (a harness served over A2A). |
+| `artifactProvenance` | `{contentHash, producedAt, sourceReferences}` | On an artifact's `metadata`: what the worker claims of it — `sha256:` of the body, when, from what (a diff's file). The orchestrator hashes the body it receives and says when the two differ rather than taking the claim. Since SHIELD SH-15. |
 
 ## Methods
 
@@ -82,8 +85,6 @@ not expect them.
 | `acknowledgement` | `{kind, attemptId, at}` | The adapters currently infer acceptance from each protocol's own states, which is exactly the inference the field exists to remove. |
 | `attempt` | `{attemptId, number, leaseExpiresAt}` | A worker still cannot tell a retry from a duplicate delivery; the orchestrator tells them apart in its own store. |
 | `contextManifest` | `[{uri, access, materialization, sharing, required}]` | The manifest reaches both bindings rendered as prose, so nothing on the wire says read-only, snapshot or private. |
-| `artifactProvenance` | `{sourceReferences, contentHash, producedAt}` | Hashes and attributions are computed orchestrator-side, so what the execution knows about an output is what it inferred rather than what the worker claimed. |
-| `approvalRequest` | `{toolCall, options, expiresAt}` | ACP has `session/request_permission` and it is used; A2A's `input-required` says a task waits without saying what for. The field would give A2A the ACP shape. |
 
 ## Deliberately out of scope
 

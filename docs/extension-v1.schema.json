@@ -81,6 +81,112 @@
           "type": "boolean",
           "description": "Stop at a checkpoint you can be resumed from. Neither protocol has a pause; both only cancel."
         },
+        "approval": {
+          "type": "object",
+          "description": "The option chosen for the approval a task is waiting on, sent on that task (A2A: a message naming the task; ACP: the permission's answer). A caller without the extension answers with one whole word instead: yes, no, always, or an option's name.",
+          "properties": {
+            "optionId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "optionId"
+          ],
+          "additionalProperties": false
+        },
+        "approvalRequest": {
+          "type": "object",
+          "description": "What a task waiting on `input-required` waits for: the tool call, the options, and until when. ACP's session/request_permission, given to A2A.",
+          "properties": {
+            "toolCall": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "kind": {
+                  "type": "string"
+                },
+                "sentence": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "title",
+                "kind"
+              ],
+              "additionalProperties": true
+            },
+            "options": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "optionId": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "allow_once",
+                      "allow_always",
+                      "reject_once",
+                      "reject_always"
+                    ]
+                  }
+                },
+                "required": [
+                  "optionId",
+                  "name",
+                  "kind"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 1
+            },
+            "expiresAt": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "required": [
+            "toolCall",
+            "options",
+            "expiresAt"
+          ],
+          "additionalProperties": false
+        },
+        "artifactProvenance": {
+          "type": "object",
+          "description": "On an artifact's metadata: what the worker claims of it \u2014 the hash of its body, when it was produced, what it was produced from. The orchestrator hashes the body it receives and says when the two differ.",
+          "properties": {
+            "contentHash": {
+              "type": "string",
+              "pattern": "^sha256:[0-9a-f]{64}$"
+            },
+            "producedAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "sourceReferences": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "contentHash",
+            "producedAt"
+          ],
+          "additionalProperties": false
+        },
         "usage": {
           "type": "object",
           "description": "What this turn spent. A budget's cost is a limit, not a measurement, and nothing else records what one node of a tree used. `cost` only when the worker could price its own model.",
@@ -145,6 +251,7 @@
     "uri": "https://datalayer.ai/extensions/orchestration/v1",
     "envelopeKey": "datalayer",
     "orchestratorSends": [
+      "approval",
       "budget",
       "checkpoint",
       "credential",
@@ -152,6 +259,8 @@
       "pause"
     ],
     "workerSends": [
+      "approvalRequest",
+      "artifactProvenance",
       "error",
       "paused",
       "usage"
@@ -162,9 +271,7 @@
     "specifiedNotYetOnTheWire": [
       "acknowledgement",
       "attempt",
-      "contextManifest",
-      "artifactProvenance",
-      "approvalRequest"
+      "contextManifest"
     ]
   }
 }
