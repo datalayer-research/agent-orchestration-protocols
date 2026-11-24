@@ -1,6 +1,6 @@
 # A durable control plane
 
-Part of [Context Orchestration Protocols](./index.md).
+Part of [Agent Orchestration Protocols](./index.md).
 
 What it took to make a delegation outlive the process that dispatched it.
 Everything below was found by building it, and several of the findings are

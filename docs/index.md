@@ -1,4 +1,4 @@
-# Context Orchestration Protocols
+# Agent Orchestration Protocols
 
 How an agent hands work to other agents over the protocols they already
 speak — A2A and ACP — and what those protocols cannot say about that work
@@ -103,4 +103,4 @@ Written as the work they describe is built and measured:
   time to first worker event, context bytes referenced against copied, and
   the tokens orchestration itself adds.
 
-Read more on <https://datalayer.ai/research/context/orchestration-protocols>.
+Read more on <https://datalayer.ai/research/agent/orchestration-protocols>.

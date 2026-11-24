@@ -1,6 +1,6 @@
 # The strategy
 
-Part of [Context Orchestration Protocols](./index.md).
+Part of [Agent Orchestration Protocols](./index.md).
 
 One agent hands work to others. The question this work exists to answer is
 not *how do agents talk* — several protocols already answer that — but

@@ -1,6 +1,6 @@
 # Two things that look like gaps and are not
 
-Part of [Context Orchestration Protocols](./index.md).
+Part of [Agent Orchestration Protocols](./index.md).
 
 **`collect`.** Both adapters refuse it and neither should be read as a
 protocol gap. Artifacts are read from the execution store, where they were

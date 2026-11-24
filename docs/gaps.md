@@ -1,6 +1,6 @@
 # The gaps, and the field each one maps to
 
-Part of [Context Orchestration Protocols](./index.md).
+Part of [Agent Orchestration Protocols](./index.md).
 
 | # | Gap | Where it showed up | Extension field | Scenario that needs it |
 |---|---|---|---|---|

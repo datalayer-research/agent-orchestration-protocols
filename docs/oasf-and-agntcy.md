@@ -1,6 +1,6 @@
 # OASF and AGNTCY, evaluated
 
-Part of [Context Orchestration Protocols](./index.md).
+Part of [Agent Orchestration Protocols](./index.md).
 
 Section 12's Phase 4 asks whether the [`AgentDescriptor`](./strategy.md) maps
 to [OASF](https://github.com/agntcy/oasf) records and whether

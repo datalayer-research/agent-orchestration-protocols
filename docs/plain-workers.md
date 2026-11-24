@@ -1,6 +1,6 @@
 # What a plain worker still gets
 
-Part of [Context Orchestration Protocols](./index.md).
+Part of [Agent Orchestration Protocols](./index.md).
 
 Every field above is optional and capability-negotiated, and the reduction is
 reported on the execution rather than hidden. A worker that has never heard of

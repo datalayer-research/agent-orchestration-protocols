@@ -1,6 +1,6 @@
 # Execution trees
 
-Part of [Context Orchestration Protocols](./index.md).
+Part of [Agent Orchestration Protocols](./index.md).
 
 What changes when a worker becomes an orchestrator. The single-level case is
 mostly a durability problem; the tree is mostly an **authority** problem.

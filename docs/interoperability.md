@@ -1,6 +1,6 @@
 # Interoperability
 
-Part of [Context Orchestration Protocols](./index.md).
+Part of [Agent Orchestration Protocols](./index.md).
 
 Traces of a standard A2A client against [the reference worker](./reference-agents.md),
 and of Datalayer's own dispatch pattern against a worker that has never

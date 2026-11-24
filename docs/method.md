@@ -1,6 +1,6 @@
 # How the gaps were found
 
-Part of [Context Orchestration Protocols](./index.md).
+Part of [Agent Orchestration Protocols](./index.md).
 
 A protocol gap report, written from two things that were built rather than
 from a reading of the two specifications. Both live in the open-source

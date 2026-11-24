@@ -1,6 +1,6 @@
 # Reference agents, and a public conformance suite
 
-Part of [Context Orchestration Protocols](./index.md).
+Part of [Agent Orchestration Protocols](./index.md).
 
 A worker implementing the extension, and the tests anybody can run against
 their own, with no Datalayer service anywhere in the process

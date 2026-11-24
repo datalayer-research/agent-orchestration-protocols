@@ -2,9 +2,9 @@
 
 [![Become a Sponsor](https://img.shields.io/static/v1?label=Become%20a%20Sponsor&message=%E2%9D%A4&logo=GitHub&style=flat&color=1ABC9C)](https://github.com/sponsors/datalayer)
 
-# ⚗️ 📡 Context Orchestration Protocols
+# ⚗️ 📡 Agent Orchestration Protocols
 
-Read more on https://datalayer.ai/research/context/orchestration-protocols.
+Read more on https://datalayer.ai/research/agent/orchestration-protocols.
 
 The documents are in [`docs/`](./docs/index.md), starting from its index:
 

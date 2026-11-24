@@ -1,6 +1,6 @@
 # Fields the proposal started with that no scenario needs
 
-Part of [Context Orchestration Protocols](./index.md).
+Part of [Agent Orchestration Protocols](./index.md).
 
 Three of the nine items in the extension's original scope do not survive the
 rule, and they are the useful part of this report.

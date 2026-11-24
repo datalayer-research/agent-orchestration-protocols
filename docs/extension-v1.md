@@ -1,6 +1,6 @@
 # The Datalayer orchestration extension, v1
 
-Part of [Context Orchestration Protocols](./index.md).
+Part of [Agent Orchestration Protocols](./index.md).
 
 A versioned, optional extension that lets a worker and an orchestrator say the
 things about *delegated work* that A2A and ACP leave unsaid. Every field here
