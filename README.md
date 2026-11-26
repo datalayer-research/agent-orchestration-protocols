@@ -4,7 +4,7 @@
 
 # ⚗️ 📡 Agent Orchestration Protocols
 
-Read more on https://datalayer.ai/research/agent/orchestration-protocols.
+Read more on https://datalayer.ai/research/agents/orchestration-protocols.
 
 The documents are in [`docs/`](./docs/index.md), starting from its index:
 
